@@ -2,28 +2,31 @@ import React, { Component } from 'react'
 import { fetchData } from "../../utils/Api"
 import { connect } from 'react-redux'
 import { getMovies } from "../../actions"
+import Card from '../../component/Card/Card'
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
 
 class MovieContainer extends Component {
-
   componentDidMount = async () => {
    try {
         const url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&with_genres=878';
         const movieData = await fetchData(url);
         console.log(this.props.getMovies)
-      this.props.getMovies(movieData.results)
-        // console.log(movieData.results, "data")
+        this.props.getMovies(movieData.results)
       } catch(error) {
         throw new Error(error.message)
       }
     }
 
     render(){
+      const { movies } = this.props;
+      const displayMovies = movies.map((movie) => {
+        return <Card {...movie}/>
+      })
       return(
         <div>
-         MovieContainer
+         { displayMovies}
         </div>
       )
     }
