@@ -4,7 +4,7 @@ class SignIn extends Component {
   constructor(){
     super()
     this.state = {
-      name: '',
+      
       email: '',
       password: ''
     }
@@ -14,7 +14,6 @@ class SignIn extends Component {
     return(
       <div>
         <form>
-          <input type="text" placeholder="User Name"/>
           <input type="email" placeholder="Email"/>
           <input type="password" placeholder="Password"/>
           <button>submit</button>
