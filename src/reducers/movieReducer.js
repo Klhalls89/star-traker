@@ -3,8 +3,8 @@ import { getMovies } from '../actions'
 
 export const movieReducer = (state=[], action) => {
   switch(action.type){
-    case "ADD_MOVIES": 
-      return [...state, action.movies]
+    case "GET_MOVIES": 
+      return action.movies
 
     default:
       return state
