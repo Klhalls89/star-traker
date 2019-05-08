@@ -3,6 +3,7 @@ import { fetchData } from '../../utils/Api';
 import './App.css';
 import { connect } from 'react-redux';
 import { getMovies } from '../../actions/index'
+import  Header  from '../Header/Header'
 // import { mapStateToProps, mapDispatchToProps } from 'react-redux';
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
@@ -19,7 +20,9 @@ class App extends Component {
   }
   render(){
     return(
-      <div></div>
+      <div>
+        <Header/>
+      </div>
     )
   }
 }
