@@ -4,17 +4,18 @@ import './App.css';
 import { connect } from 'react-redux';
 import { getMovies } from '../../actions/index'
 import  Header  from '../Header/Header'
+import  MovieContainer from '../MovieContainer/MovieContainer'
 // import { mapStateToProps, mapDispatchToProps } from 'react-redux';
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
 class App extends Component {
   componentDidMount = async () => {
-    console.log(this.props, "props")
+      console.log(this.props, "props")
       console.log('howdy')
       console.log(API_KEY, "api key")
       const url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&with_genres=878';
       const movieData = await fetchData(url);
-      console.log(movieData.results, "results")
+     console.log(movieData, "moviesss")
       this.props.addMovies(movieData.results)
       
   }
@@ -22,6 +23,7 @@ class App extends Component {
     return(
       <div>
         <Header/>
+        <MovieContainer/>
       </div>
     )
   }

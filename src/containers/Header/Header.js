@@ -34,10 +34,11 @@ class Header extends Component {
       method: 'POST', 
       body: JSON.stringify(text), 
       headers: {'Content-Type': 'application/json'}
-     
     }
     const response = await fetchData(url,options)
-    console.log(response)
+    if(response.ok){
+      this.props.addUser(text);
+    }
     
   }
   render(){
