@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { fetchData } from '../../utils/Api'
+import { fetchData } from '../../utils/Api';
+import { Redirect } from 'react-router-dom';
 
 class SignUp extends Component {
   constructor(){
@@ -7,7 +8,8 @@ class SignUp extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      error: ''
     }
   }
 
@@ -24,19 +26,22 @@ class SignUp extends Component {
         headers:{ "Content-Type": "application/json" },
         body: JSON.stringify(data)
       }
-      const response = await fetchData(url, options)
-      console.log(reponse)
+
+      try{
+        const response = await fetchData(url, options)
+        if (!response.ok) 
+        throw new Error(response.statusText);
+      }catch(error){
+          this.setState({
+            error: "email already taken"
+
+          })
+      }
+    
     } 
   }
 
-  validateInput = () => {
-    if(this.state.email === "" ||this.state.password === "" ||this.state.name === "" ){
-      console.log("fill out the email")
-    }else {
-
-    }
-  }
-
+  
   //handle change
   handleChange = (e) => {
     const {name, value} = e.target
@@ -66,7 +71,9 @@ class SignUp extends Component {
                 value={this.state.password} 
                 onChange={this.handleChange}/>
           <button onSubmit={this.handleSubmit}>submit</button>
+          {this.state.error}
         </form>
+        
       </div>
     )
   }
