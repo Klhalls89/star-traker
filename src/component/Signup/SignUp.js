@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { fetchData } from '../../utils/Api';
 import { Redirect } from 'react-router-dom';
 import { createOption } from '../../utils/options'
+import { connect } from 'react-redux'
+import { addUser } from '../../actions/'
 
 class SignUp extends Component {
   constructor(){
@@ -32,9 +34,8 @@ class SignUp extends Component {
     try {
       const result = await fetchData(url, options)
         if(result.status === "success") {
-          console.log(result, "result")
+          this.props.addUser(data)
           this.setState({ error: "", redirect: true})
-          // return <Redirect to="/"/>
         } else {
             this.setState({error: "email already taken"})
         }
@@ -83,4 +84,10 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp
+const mapDispatchToProps = (dispatch) => ({
+  addUser: (user) => dispatch(addUser(user))
+})
+
+
+
+export default connect(null, mapDispatchToProps)(SignUp)
