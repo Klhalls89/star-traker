@@ -10,7 +10,8 @@ class SignUp extends Component {
       name: '',
       email: '',
       password: '',
-      error: ''
+      error: '',
+      redirect: false
     }
   }
 
@@ -31,7 +32,9 @@ class SignUp extends Component {
     try {
       const result = await fetchData(url, options)
         if(result.status === "success") {
-          this.setState({ error: ""})
+          console.log(result, "result")
+          this.setState({ error: "", redirect: true})
+          // return <Redirect to="/"/>
         } else {
             this.setState({error: "email already taken"})
         }
@@ -71,6 +74,8 @@ class SignUp extends Component {
                 onChange={this.handleChange}/>
           <button onSubmit={this.handleSubmit}>submit</button>
           {this.state.error}
+          {this.state.redirect && <Redirect to="/"/>}
+        
         </form>
         
       </div>
