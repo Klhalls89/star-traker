@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchData } from '../../utils/Api';
 import { Redirect } from 'react-router-dom';
+import { createOption } from '../../utils/options'
 
 class SignUp extends Component {
   constructor(){
@@ -13,32 +14,30 @@ class SignUp extends Component {
     }
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     e.preventDefault()
-    if(this.state.email === "" ||this.state.password === "" ||this.state.name === "" ){
+    if(this.state.email === "" || this.state.password === "" || this.state.name === "" ){
       alert("fill out all necessary input")
     } else {
-      const data = this.state
-      console.log(data)
-      const url = 'http://localhost:3000/api/users/new'
-      const options = {
-        method: "POST",
-        headers:{ "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      }
-
-      try{
-        const response = await fetchData(url, options)
-        if (!response.ok) 
-        throw new Error(response.statusText);
-      }catch(error){
-          this.setState({
-            error: "email already taken"
-
-          })
-      }
-    
-    } 
+      this.makeUser()
+    }
+  }
+ 
+  makeUser = async () => {
+    const { name, email, password} = this.state
+    const url = 'http://localhost:3000/api/users/new'
+    const data = { name, email, password }
+    const options = createOption("POST", data)
+    try {
+      const result = await fetchData(url, options)
+        if(result.status === "success") {
+          this.setState({ error: ""})
+        } else {
+            this.setState({error: "email already taken"})
+        }
+    } catch(error){
+      console.log(error, "this is error")   
+      } 
   }
 
   
