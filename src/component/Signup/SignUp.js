@@ -11,27 +11,30 @@ class SignUp extends Component {
     }
   }
 
-  //make sure all of the feilds have been filled out before allowing the submit
-  // /api/users/new
   handleSubmit = async (e) => {
     e.preventDefault()
-
-    const data = this.state
-    console.log(data)
-    const url = 'http://localhost:3000/api/users/new'
-    const options = {
-      method: "POST",
-      headers:{
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }
-
-
+    if(this.state.email === "" ||this.state.password === "" ||this.state.name === "" ){
+      alert("fill out all necessary input")
+    } else {
+      const data = this.state
+      console.log(data)
+      const url = 'http://localhost:3000/api/users/new'
+      const options = {
+        method: "POST",
+        headers:{ "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }
       const response = await fetchData(url, options)
-      console.log(response)
+      console.log(reponse)
+    } 
+  }
 
-    
+  validateInput = () => {
+    if(this.state.email === "" ||this.state.password === "" ||this.state.name === "" ){
+      console.log("fill out the email")
+    }else {
+
+    }
   }
 
   //handle change
