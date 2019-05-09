@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchData } from '../../utils/Api';
-import { Redirect } from 'react-router-dom';
+import { Redirect, history } from 'react-router-dom';
 import { createOption } from '../../utils/options'
 import { connect } from 'react-redux'
 import { addUser } from '../../actions/'
@@ -76,9 +76,7 @@ class SignUp extends Component {
           <button onSubmit={this.handleSubmit}>submit</button>
           {this.state.error}
           {this.state.redirect && <Redirect to="/"/>}
-        
         </form>
-        
       </div>
     )
   }
