@@ -5,6 +5,9 @@ export const userReducer = (state={}, action) => {
     case"ADD_USER":
       return action.user
 
+    case"SIGN_OUT":
+      return action.user
+
     default: return state
   }
 }

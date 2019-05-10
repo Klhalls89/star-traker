@@ -8,3 +8,9 @@ export const addUser = (user) => ({
   type: "ADD_USER",
   user
 })
+
+export const signOut = (user) => ({
+  type: "SIGN_OUT",
+  user
+
+})
