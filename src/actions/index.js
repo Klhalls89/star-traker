@@ -14,3 +14,13 @@ export const signOut = (user) => ({
   user
 
 })
+
+export const isLoading = (bool) => ({
+  type: 'IS_LOADING',
+  bool
+})
+ 
+export const hasErrored = (message) => ({
+  type: 'HAS_ERRORED',
+  message
+})

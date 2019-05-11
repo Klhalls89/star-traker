@@ -4,6 +4,7 @@ import { Redirect, history } from 'react-router-dom';
 import { createOption } from '../../utils/options'
 import { connect } from 'react-redux'
 import { addUser } from '../../actions/'
+import { createUser } from '../../thunks/createUser'
 
 class SignUp extends Component {
   constructor(){
@@ -22,27 +23,34 @@ class SignUp extends Component {
     if(this.state.email === "" || this.state.password === "" || this.state.name === "" ){
       alert("fill out all necessary input")
     } else {
-      this.makeUser()
-    }
-  }
- 
-  makeUser = async () => {
-    const { name, email, password} = this.state
+      const { name, email, password} = this.state
     const url = 'http://localhost:3000/api/users/new'
     const data = { name, email, password }
-    const options = createOption("POST", data)
-    try {
-      const result = await fetchData(url, options)
-        if(result.status === "success") {
-          this.props.addUser(data)
-          this.setState({ error: "", redirect: true})
-        } else {
-            this.setState({error: "email already taken"})
-        }
-    } catch(error){
-      console.log(error, "this is error")   
-      } 
+    const method = 'POST'
+      this.props.createUser(url,method,data)
+    }
   }
+
+  // createUser = async () => {
+  //   const { name, email, password} = this.state
+  //   const url = 'http://localhost:3000/api/users/new'
+  //   const data = { name, email, password }
+  //   const options = createOption("POST", data)
+
+  //   try {
+      
+  //     const result = await fetchData(url, options)
+  //       if(result.status === "success") {
+
+  //         this.props.addUser(data)
+  //         this.setState({ error: "", redirect: true})
+  //       } else {
+  //           this.setState({error: "email already taken"})
+  //       }
+  //   } catch(error){
+  //     console.log(error, "this is error")   
+  //     } 
+  // }
 
   
   //handle change
@@ -76,14 +84,18 @@ class SignUp extends Component {
           <button onSubmit={this.handleSubmit}>submit</button>
           {this.state.error}
           {this.state.redirect && <Redirect to="/"/>}
+      
         </form>
       </div>
     )
   }
 }
 
+
 const mapDispatchToProps = (dispatch) => ({
-  addUser: (user) => dispatch(addUser(user))
+  addUser: (user) => dispatch(addUser(user)),
+  createUser: (url,method, data) => dispatch(createUser(url,method, data))
+
 })
 
 

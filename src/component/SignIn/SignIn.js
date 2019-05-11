@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fetchData } from '../../utils/Api';
 import { createOption } from '../../utils/options';
 import { connect } from 'react-redux';
-import { addUser } from '../../actions';
+import { addUser, isLoading, hasErrored } from '../../actions';
 import { Redirect } from 'react-router-dom';
 
 class SignIn extends Component {
@@ -63,6 +63,7 @@ class SignIn extends Component {
           
           <button>submit</button>
         </form>
+        
         { this.state.redirect && <Redirect to="/"/>}
       </div>
     )
@@ -70,7 +71,9 @@ class SignIn extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addUser: (data) => dispatch(addUser(data))
+  addUser: (data) => dispatch(addUser(data)),
+  isLoading: (bool) => dispatch(isLoading(bool)),
+  hasErrored: (message) => dispatch(hasErrored(message))
 })
 
 export default connect(null,mapDispatchToProps)(SignIn)
