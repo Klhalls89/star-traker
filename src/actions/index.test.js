@@ -2,19 +2,48 @@ import * as actions from "./index.js"
 
 describe ('index', () => {
 
-  it('should get movies and return an action', () => {
+
+  it('should return a get movies action object', () => {
     //setup
     const movies = [{title: 'movie1'},{title: 'movie2'}]
-    const expectedAction = {
+    let expectedAction = {
       type: "GET_MOVIES",
       movies
     }
-    //excution
-    const results = actions.getMovies(movies)
+    //execution
+    const returnedValue = actions.getMovies(movies)
     //expectation
-    //it should be an object with the type of getmovie contains the movies 
-    expect(results).toEqual(expectedAction)
+    expect(returnedValue).toEqual(expectedAction)
+  })
+
+  it('should return an add user action object', () => {
+    //setup
+    const user = {name:'Kristen'}
+    let expectedAction = {
+      type: "ADD_USER",
+      user
+    }
+    //execution
+    const returnedValue = actions.addUser(user)
+    //expectaion
+    expect(returnedValue).toEqual(expectedAction)
 
   })
+
+    it('should return a sign out action object', () => {
+    //setup
+    const user = {}
+    let expectedAction = {
+      type: "SIGN_OUT",
+      user
+    }
+    //execution
+    const returnedValue = actions.signOut(user)
+    //expectaion
+    expect(returnedValue).toEqual(expectedAction)
+
+  })
+
+
 
 })

@@ -8,10 +8,7 @@ import Header from '../../component/Header/Header'
 import SignIn from '../../component/SignIn/SignIn'
 import SignUp from '../../component/Signup/SignUp'
 
-class App extends Component {
-  // componentDidMount = async () => {
-   
-  // }
+export class App extends Component {
 
   render(){
     return(

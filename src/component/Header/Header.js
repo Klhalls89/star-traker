@@ -5,7 +5,7 @@ import { signOut } from '../../actions/'
 
 
 
-class Header extends Component {
+ export class Header extends Component {
 
  signOutUser = () => {
   this.props.signOut({})
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch) => ({
   signOut: (data) => dispatch(signOut(data))
 })
 
-export default connect(null, mapDispatchToProps) (Header)
+export default connect(null, mapDispatchToProps)(Header)
