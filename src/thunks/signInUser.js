@@ -1,6 +1,7 @@
-import { addUser, isLoading, hasErrored } from '../actions/index'
-import { createOption } from '../utils/options'
-export const createUser = (url, method2, data2 ) => {
+import { addUser, isLoading, hasErrored } from '../actions/index';
+import { createOption } from '../utils/options';
+
+export const signInUser = (url, method2, data2 ) => {
   return async (dispatch) => {
     const method = method2
     const options = createOption(method, data2)
@@ -11,7 +12,8 @@ export const createUser = (url, method2, data2 ) => {
         throw Error(response.statusText)
       }
       const data = await response.json()
-      const userInfo = { id: data.id, name: data2.name }
+      console.log(data, "signin data")
+      // const userInfo = { id: data.id, name: data2.name }
       dispatch(addUser(userInfo))
       dispatch(isLoading(false))
     } catch (error) {

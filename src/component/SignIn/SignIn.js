@@ -23,6 +23,8 @@ class SignIn extends Component {
     })
   }
 
+  
+
   handleSubmit = async (e) => {
     e.preventDefault()
     const { email, password } = this.state
@@ -33,7 +35,7 @@ class SignIn extends Component {
     try {
       const response = await fetchData(url,options)
       if(response.status === "success"){
-        this.props.addUser(data)
+        this.props.addUser(response.data)
         this.setState({ redirect: true})
       }
     }catch(error){

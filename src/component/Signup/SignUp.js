@@ -23,11 +23,11 @@ class SignUp extends Component {
     if(this.state.email === "" || this.state.password === "" || this.state.name === "" ){
       alert("fill out all necessary input")
     } else {
-      const { name, email, password} = this.state
+    const { name, email, password} = this.state
     const url = 'http://localhost:3000/api/users/new'
     const data = { name, email, password }
     const method = 'POST'
-      this.props.createUser(url,method,data)
+    this.props.createUser(url,method,data)
     }
   }
 
@@ -83,7 +83,7 @@ class SignUp extends Component {
                 onChange={this.handleChange}/>
           <button onSubmit={this.handleSubmit}>submit</button>
           {this.state.error}
-          {this.state.redirect && <Redirect to="/"/>}
+         
       
         </form>
       </div>
@@ -93,7 +93,6 @@ class SignUp extends Component {
 
 
 const mapDispatchToProps = (dispatch) => ({
-  addUser: (user) => dispatch(addUser(user)),
   createUser: (url,method, data) => dispatch(createUser(url,method, data))
 
 })
