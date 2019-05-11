@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.scss';
 import App from './containers/App/App';
 import { rootReducer } from './reducers'
 import { BrowserRouter } from 'react-router-dom'

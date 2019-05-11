@@ -4,7 +4,7 @@ const Card = (props) => {
   const { poster_path } = props;
   const imageUrl = `https://image.tmdb.org/t/p/w185/${poster_path}`
   return (
-    <div>
+    <div className="Card">
       <img src={imageUrl}/>
     </div>
   )
