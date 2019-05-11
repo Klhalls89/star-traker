@@ -55,8 +55,11 @@ class SignUp extends Component {
 
   render(){
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="form-bg">
+        <form className="sign" onSubmit={this.handleSubmit}>
+          <i class="fas fa-rocket"></i>
+          <h4>Please enter your Name, Email & Password</h4>
+          <p>Have an accout? Go to the sign-in button</p>
           <input type="text" 
                 placeholder="Name" 
                 name="name" 
@@ -73,7 +76,7 @@ class SignUp extends Component {
                 name="password" 
                 value={this.state.password} 
                 onChange={this.handleChange}/>
-          <button onSubmit={this.handleSubmit}>submit</button>
+          <button onSubmit={this.handleSubmit}>Let's go!</button>
           {this.state.error}
           {this.state.redirect && <Redirect to="/"/>}
         </form>

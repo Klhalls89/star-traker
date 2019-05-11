@@ -41,14 +41,15 @@ class SignIn extends Component {
         error: "Please sign up"
       })
     }
-    
-
   }
 
   render(){
     return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="form-bg">
+        <form className="sign" onSubmit={this.handleSubmit}>
+          <i class="fas fa-rocket"></i>
+          <h4>Please enter your Email & Password</h4>
+          <p>or go to the sign-up button</p>
           <input type="email" 
                  placeholder="Email" 
                  name="email" 
@@ -61,7 +62,7 @@ class SignIn extends Component {
                  value={this.state.password}
                  onChange={this.handleChange} />
           
-          <button>submit</button>
+          <button>Let's go!</button>
         </form>
         { this.state.redirect && <Redirect to="/"/>}
       </div>

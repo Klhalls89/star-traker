@@ -15,7 +15,7 @@ header {
   }
 
   nav {
-   grid-area: nav;
+    grid-area: nav;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +24,8 @@ header {
       text-decoration: none;
       color: $silver;
       margin: 5px;
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: 300;
 
       :hover {
         color: $coral;
