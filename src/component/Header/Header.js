@@ -5,7 +5,7 @@ import { signOut } from '../../actions/'
 
 
 
-class Header extends Component {
+ export class Header extends Component {
 
  signOutUser = () => {
   this.props.signOut({})
@@ -13,13 +13,17 @@ class Header extends Component {
 
 render () {
   return (
-    <div>
-      <header>
-       <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
-       <NavLink to ="/SignOut" className="nav" onClick={this.signOutUser}>Sign-Out</NavLink>
-       <NavLink to ="/SignUp" className="nav">Sign-up</NavLink>
-      </header>
-    </div>
+    <header>
+      <section>
+        <h1>Star Traker</h1>
+        <i class="fas fa-rocket"></i>
+      </section>
+      <nav>
+        <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
+        <NavLink to ="/SignOut" className="nav" onClick={this.signOutUser}>Sign-Out</NavLink>
+        <NavLink to ="/SignUp" className="nav">Sign-up</NavLink>
+      </nav>
+    </header>
   ) 
 }
  
@@ -29,4 +33,4 @@ const mapDispatchToProps = (dispatch) => ({
   signOut: (data) => dispatch(signOut(data))
 })
 
-export default connect(null, mapDispatchToProps) (Header)
+export default connect(null, mapDispatchToProps)(Header)

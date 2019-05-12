@@ -17,6 +17,7 @@ class MovieContainer extends Component {
       this.props.getMovies(movieData.results)
     } catch(error) {
       throw new Error(error.message)
+
     }
     this.props.redirect(false)
 
@@ -29,8 +30,8 @@ class MovieContainer extends Component {
         return <Card {...movie}/>
       })
       return(
-        <div>
-         { displayMovies}
+        <div className="dispaly-movies">
+         {displayMovies}
         </div>
       )
     }
