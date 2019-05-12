@@ -12,9 +12,7 @@ export const signInUser = (url, method2, data2 ) => {
         throw Error(response.statusText)
       }
       const data = await response.json()
-      console.log(data, "signin data")
       const userInfo = data.data[0]
-      console.log(userInfo, "usrinfo")
       dispatch(addUser(userInfo))
       dispatch(isLoading(false))
       dispatch(redirect(true))

@@ -5,5 +5,4 @@ export const hasErroredReducer = (state="", action) => {
     default: 
       return state
   }
-
 }
