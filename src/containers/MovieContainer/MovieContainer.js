@@ -12,7 +12,6 @@ class MovieContainer extends Component {
    try {
         const url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&with_genres=878';
         const movieData = await fetchData(url);
-        console.log(this.props.getMovies)
         this.props.getMovies(movieData.results)
       } catch(error) {
         throw new Error(error.message)
