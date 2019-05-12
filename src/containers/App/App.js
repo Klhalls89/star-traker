@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { fetchData } from '../../utils/Api';
-import './App.css';
 import {Route, NavLink} from 'react-router-dom'
 import { connect } from 'react-redux'
 import MovieContainer from '../MovieContainer/MovieContainer'
@@ -12,7 +11,7 @@ export class App extends Component {
 
   render(){
     return(
-      <div>
+      <div className="App">
         <Header />
         <Route exact path='/SignIn' component={SignIn} />
         <Route exact path='/SignUp' component={SignUp} />

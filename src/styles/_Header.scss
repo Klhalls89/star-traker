@@ -1,0 +1,38 @@
+header {
+  background-color: $navy;
+  display: grid; 
+  grid-template-areas: "logo nav";
+
+  section {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+
+    h1 {
+      font-family: $accent-font;
+    }
+  }
+
+  nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    a {
+      text-decoration: none;
+      color: $silver;
+      margin: 5px;
+      font-size: 12px;
+      font-weight: 300;
+
+      :hover {
+        color: $coral;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+

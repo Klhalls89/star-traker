@@ -24,8 +24,8 @@ class MovieContainer extends Component {
         return <Card {...movie}/>
       })
       return(
-        <div>
-         { displayMovies}
+        <div className="dispaly-movies">
+         {displayMovies}
         </div>
       )
     }
