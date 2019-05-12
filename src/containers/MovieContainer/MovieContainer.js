@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { fetchData } from "../../utils/Api"
 import { connect } from 'react-redux'
 import { getMovies } from "../../actions"
+import { redirect } from '../../actions/index'
 import Card from '../../component/Card/Card'
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
@@ -17,6 +18,8 @@ class MovieContainer extends Component {
     } catch(error) {
       throw new Error(error.message)
     }
+    this.props.redirect(false)
+
   }
   
   render(){
@@ -40,7 +43,8 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  getMovies : (movies) => dispatch(getMovies(movies))
+  getMovies : (movies) => dispatch(getMovies(movies)),
+  redirect: (bool) => dispatch(redirect(bool))
 })
 
   
