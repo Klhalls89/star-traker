@@ -4,6 +4,7 @@ import { createOption } from '../../utils/options';
 import { connect } from 'react-redux';
 import { addUser, isLoading, hasErrored } from '../../actions';
 import { Redirect } from 'react-router-dom';
+import { signInUser } from '../../thunks/signInUser';
 
 class SignIn extends Component {
   constructor(){
@@ -31,20 +32,8 @@ class SignIn extends Component {
     const data = { email, password}
     const url ="http://localhost:3000/api/users"
     const options = createOption("POST", data)
-
-    try {
-      const response = await fetchData(url,options)
-      if(response.status === "success"){
-        this.props.addUser(response.data)
-        this.setState({ redirect: true})
-      }
-    }catch(error){
-      this.setState({
-        error: "Please sign up"
-      })
-    }
-    
-
+    const method = "POST"
+    this.props.signInUser(url, method, data)
   }
 
   render(){
@@ -66,16 +55,18 @@ class SignIn extends Component {
           <button>submit</button>
         </form>
         
-        { this.state.redirect && <Redirect to="/"/>}
+        { this.props.redirect && <Redirect to="/"/>}
       </div>
     )
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addUser: (data) => dispatch(addUser(data)),
-  isLoading: (bool) => dispatch(isLoading(bool)),
-  hasErrored: (message) => dispatch(hasErrored(message))
+const mapStateToProps = (state) => ({
+  redirect: state.redirect
 })
 
-export default connect(null,mapDispatchToProps)(SignIn)
+const mapDispatchToProps = (dispatch) => ({
+  signInUser: (data) => dispatch(signInUser(data))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(SignIn)

@@ -31,27 +31,7 @@ class SignUp extends Component {
     }
   }
 
-  // createUser = async () => {
-  //   const { name, email, password} = this.state
-  //   const url = 'http://localhost:3000/api/users/new'
-  //   const data = { name, email, password }
-  //   const options = createOption("POST", data)
-
-  //   try {
-      
-  //     const result = await fetchData(url, options)
-  //       if(result.status === "success") {
-
-  //         this.props.addUser(data)
-  //         this.setState({ error: "", redirect: true})
-  //       } else {
-  //           this.setState({error: "email already taken"})
-  //       }
-  //   } catch(error){
-  //     console.log(error, "this is error")   
-  //     } 
-  // }
-
+  
   
   //handle change
   handleChange = (e) => {
@@ -83,8 +63,6 @@ class SignUp extends Component {
                 onChange={this.handleChange}/>
           <button onSubmit={this.handleSubmit}>submit</button>
           {this.state.error}
-         
-      
         </form>
       </div>
     )
@@ -96,7 +74,5 @@ const mapDispatchToProps = (dispatch) => ({
   createUser: (url,method, data) => dispatch(createUser(url,method, data))
 
 })
-
-
 
 export default connect(null, mapDispatchToProps)(SignUp)

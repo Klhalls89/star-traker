@@ -1,4 +1,4 @@
-import { addUser, isLoading, hasErrored } from '../actions/index';
+import { addUser, isLoading, hasErrored, redirect } from '../actions/index';
 import { createOption } from '../utils/options';
 
 export const signInUser = (url, method2, data2 ) => {
@@ -13,9 +13,11 @@ export const signInUser = (url, method2, data2 ) => {
       }
       const data = await response.json()
       console.log(data, "signin data")
-      // const userInfo = { id: data.id, name: data2.name }
+      const userInfo = data.data[0]
+      console.log(userInfo, "usrinfo")
       dispatch(addUser(userInfo))
       dispatch(isLoading(false))
+      dispatch(redirect(true))
     } catch (error) {
       dispatch(hasErrored(error.message))
     }

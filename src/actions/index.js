@@ -24,3 +24,8 @@ export const hasErrored = (message) => ({
   type: 'HAS_ERRORED',
   message
 })
+
+export const redirect = (bool) => ({
+  type: "TOGGLE_REDIRECT",
+  bool
+})
