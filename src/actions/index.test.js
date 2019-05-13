@@ -44,6 +44,43 @@ describe ('index', () => {
 
   })
 
+    it('should show is loading', () => {
+      //setup
+      let bool = true
+      let expectedAction = {
+        type: "IS_LOADING",
+        bool
+      }
+      //executions
+      const returnedValue = actions.isLoading(bool)
+      //expectaion
+      expect(returnedValue).toEqual(expectedAction)
+    })
 
+    it('should show an error', () => {
+      //setup
+      const message = 'Error'
+      const expectedAction = {
+        type: "HAS_ERRORED",
+        message
+      }
+      //execution
+      const returnedValue = actions.hasErrored(message)
+      //expectation
+      expect(returnedValue).toEqual(expectedAction)
+    })
+
+    it('should toggle redirect', () => {
+      //setup
+      const bool = true
+      const expectedAction = {
+        type: "TOGGLE_REDIRECT",
+        bool
+      }
+      //execution
+      const returnedValue = actions.redirect(bool)
+      //expectation
+      expect(returnedValue).toEqual(expectedAction)
+    })
 
 })
