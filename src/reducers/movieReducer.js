@@ -1,6 +1,5 @@
 import { getMovies } from '../actions'
 
-
 export const movieReducer = (state=[], action) => {
   switch(action.type){
     case "GET_MOVIES": 
@@ -9,6 +8,4 @@ export const movieReducer = (state=[], action) => {
     default:
       return state
   }
-
-
 }
