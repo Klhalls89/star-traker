@@ -2,33 +2,45 @@ header {
   background-color: $navy;
   display: grid; 
   grid-template-areas: "logo nav";
+  padding: 0 10px;
 
   section {
-    grid-area: logo;
-    display: flex;
     align-items: center;
-    margin-left: 10px;
+    display: flex;
+    grid-area: logo;
 
     h1 {
       font-family: $accent-font;
     }
   }
 
+  .favorites {
+    background-color: $silver;
+    color: $coral;
+    border-radius: 3px;
+    border: 0;
+    margin: 10px;
+    padding: 5px;
+
+    span {
+      padding: 5px;
+    }
+  }
+
   nav {
-    grid-area: nav;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
+    grid-area: nav;
+    justify-content: flex-end;
    
     a {
-      text-decoration: none;
       color: $silver;
-      margin: 5px;
       font-size: 12px;
       font-weight: 300;
+      margin: 5px;
+      text-decoration: none;
 
       :hover {
-        color: $coral;
         cursor: pointer;
       }
     }
