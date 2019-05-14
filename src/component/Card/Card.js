@@ -1,6 +1,6 @@
 import React, { Component }from 'react';
 import { addFavoriteMovie } from '../../thunks/addFavorites'
-import { hasErrored } from '../../actions'
+import { hasErrored, deleteFavorite } from '../../actions'
 import { connect } from 'react-redux'
 import { Redirect} from 'react-router-dom'
 
@@ -12,14 +12,42 @@ export class Card extends Component {
     }
   }
 
+  //when user clicks check if user is signed in  
+      // function validate 
+  // if not signed in display error 
+  // if signed in validate if movie is in state tree 
+  // if movie is in state remove that movie 
+  // if not add to movie 
+
+  // checkForUser = () => {
+  //   console.log(this.props.movie)
+  //   if(typeof this.props.user.id !== 'number'){
+  //     this.setState({ error: "please sign in"})
+  //    }else {
+
+  //    }
+  // }
+
+  validateMovie = () => {
+    const { id } = this.props 
+    const { favorites } = this.props.user
+    const foundMovie = favorites.find((movie) => {
+      return movie.movie_id === id
+    })
+   foundMovie ? this.deleteFavorite() : this.addMovie()
+
+ 
+  }
+
+  deleteFavorite = () => {
+    console.log("I am deleting the movie")
+  }
   
 
-  click = async() =>  {
+  addMovie = async() =>  {
    if(typeof this.props.user.id !== 'number'){
     this.setState({ error: "please sign in"})
    }else {
-
-   
     const { addFavoriteMovie } = this.props
     const method = "POST"
     const url ="http://localhost:3000/api/users/favorites/new"
@@ -48,7 +76,7 @@ export class Card extends Component {
     <div className="Card">
       <section>
       <p>{vote_average}/10</p>
-      <button onClick={this.click}><i class="far fa-star"></i></button>
+      <button onClick={this.validateMovie}><i class="far fa-star"></i></button>
       </section>
       <img src={imageUrl}/>
       {this.state.error && this.state.error}
