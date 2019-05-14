@@ -20,6 +20,7 @@ export const signInUser = (url, method, data ) => {
       dispatch(addUser(userInfo.id, userInfo.name, favorites))
       dispatch(isLoading(false))
       dispatch(redirect(true))
+      console.log("redirect hits")
     } catch (error) {
       dispatch(hasErrored('email or password dosn\'t match'))
     }

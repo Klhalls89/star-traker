@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, NavLink, Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signOut, redirect } from '../../actions/'
 
@@ -10,24 +10,31 @@ export class Header extends Component {
 
  signOutUser = () => {
   this.props.signOut({})
+  console.log("sign out console check")
+  if(true){
+    console.log("got it if")
+    return <Redirect to="/"/>
+  }
  }
 
 render () {
+  console.log(this.props.user, "header user")
   return (
     <div>
     <header>
       <section>
         <h1>Star Traker</h1>
         <i class="fas fa-rocket"></i>
+        <p> {this.props.user.name ? `Hello ${this.props.user.name}` : ""}</p>
       </section>
       <nav>
         <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
-        <NavLink to ="/SignOut" className="nav" onClick={this.signOutUser}>Sign-Out</NavLink>
         <NavLink to ="/SignUp" className="nav">Sign-up</NavLink>
+        <button className="nav" onClick={this.signOutUser}> sign out</button>
         <button className="favorites">Favorites<span className="fav-num">0</span></button>
       </nav>
+     
     </header>
-
     </div>
   ) 
 }
@@ -35,7 +42,8 @@ render () {
 }
 
 const mapStateToProps = (state) => ({
-  redirect: state.redirect
+  redirect: state.redirect,
+  user: state.user
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,7 +5,7 @@ export const userReducer = (state={}, action) => {
     case"ADD_USER":
     return {
       id: action.id,
-      email: action.name,
+      name: action.name,
       favorites: action.favorites
   }
 
