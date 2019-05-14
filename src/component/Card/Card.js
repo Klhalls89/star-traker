@@ -8,6 +8,8 @@ export class Card extends Component {
     super()
   }
 
+  
+
   click = async() =>  {
     console.log(this.props.addFavoriteMovie)
     const { addFavoriteMovie } = this.props

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { addUser, isLoading, hasErrored } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { signInUser } from '../../thunks/signInUser';
+import { fetchUserFavorites } from '../../utils/fetchUserFavorites'
 
 class SignIn extends Component {
   constructor(){
@@ -29,8 +30,9 @@ class SignIn extends Component {
     const { email, password } = this.state
     const data = { email, password}
     const url ="http://localhost:3000/api/users"
-    const options = createOption("POST", data)
+    // const options = createOption("POST", data)
     const method = "POST"
+    // const favorites = fetchUserFavorites()
     this.props.signInUser(url, method, data)
   }
 

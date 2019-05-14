@@ -1,5 +1,6 @@
 import { addUser, isLoading, hasErrored, redirect } from '../actions';
 import { createOption } from '../utils/options';
+import { fetchUserFavorites } from '../utils/fetchUserFavorites';
 
 export const signInUser = (url, method, data ) => {
   return async (dispatch) => {
@@ -14,7 +15,9 @@ export const signInUser = (url, method, data ) => {
       const user = await response.json()
       console.log(user, "user")
       const userInfo = user.data
-      dispatch(addUser(userInfo))
+      const favorites = await fetchUserFavorites(userInfo.id)
+      console.log(favorites, "sign in favs")
+      dispatch(addUser(userInfo.id, userInfo.name, favorites))
       dispatch(isLoading(false))
       dispatch(redirect(true))
     } catch (error) {
