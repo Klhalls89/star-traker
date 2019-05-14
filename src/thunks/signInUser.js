@@ -7,10 +7,12 @@ export const signInUser = (url, method, data ) => {
     try {
       dispatch(isLoading(true))
       const response = await fetch(url,options)
+      console.log(response, "fetch response")
       if(!response.ok) {
         throw Error(response.statusText)
       }
       const user = await response.json()
+      console.log(user, "user")
       const userInfo = user.data
       dispatch(addUser(userInfo))
       dispatch(isLoading(false))

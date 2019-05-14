@@ -32,7 +32,6 @@ class SignIn extends Component {
     const options = createOption("POST", data)
     const method = "POST"
     this.props.signInUser(url, method, data)
-
   }
 
   render(){
