@@ -32,7 +32,6 @@ class SignUp extends Component {
   }
 
   
-  
   //handle change
   handleChange = (e) => {
     const {name, value} = e.target
@@ -67,15 +66,19 @@ class SignUp extends Component {
           <button onSubmit={this.handleSubmit}>Let's go!</button>
           {this.state.error}
         </form>
+        {this.props.redirect && <Redirect to="/"/>} 
       </div>
     )
   }
 }
 
+const mapStateToProps = (state) => ({
+  redirect: state.redirect
+})
 
 const mapDispatchToProps = (dispatch) => ({
   createUser: (url,method, data) => dispatch(createUser(url,method, data))
 
 })
 
-export default connect(null, mapDispatchToProps)(SignUp)
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
