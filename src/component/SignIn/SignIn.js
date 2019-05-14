@@ -30,9 +30,7 @@ class SignIn extends Component {
     const { email, password } = this.state
     const data = { email, password}
     const url ="http://localhost:3000/api/users"
-    // const options = createOption("POST", data)
     const method = "POST"
-    // const favorites = fetchUserFavorites()
     this.props.signInUser(url, method, data)
   }
 

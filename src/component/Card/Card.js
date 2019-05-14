@@ -1,6 +1,5 @@
 import React, { Component }from 'react';
 import { addFavoriteMovie } from '../../thunks/addFavorites'
-import { addFavorites } from '../../actions/index'
 import { connect } from 'react-redux'
 
 export class Card extends Component {
@@ -25,7 +24,6 @@ export class Card extends Component {
       vote_average: vote_average,
       overview: overview
     }
-    
     const userId = data.user_id
     console.log("userId:", userId )
     addFavoriteMovie(url,method,data,userId) 
@@ -53,8 +51,7 @@ export const mapStateToProps = (state) => ({
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addFavoriteMovie:(url,method,data) => dispatch(addFavoriteMovie(url,method,data)),
-  addFavorites:(movies) => dispatch(addFavorites(movies))
+  addFavoriteMovie:(url,method,data) => dispatch(addFavoriteMovie(url,method,data))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Card);
