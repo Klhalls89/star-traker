@@ -24,8 +24,6 @@ class SignIn extends Component {
     })
   }
 
-  
-
   handleSubmit = async (e) => {
     e.preventDefault()
     const { email, password } = this.state
@@ -58,7 +56,6 @@ class SignIn extends Component {
           
           <button>Let's go!</button>
         </form>
-        
         { this.props.redirect && <Redirect to="/"/>}
       </div>
     )
@@ -70,7 +67,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  signInUser: (data) => dispatch(signInUser(data))
+  signInUser: (url, method, data) => dispatch(signInUser(url, method, data))
+
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(SignIn)

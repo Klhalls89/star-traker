@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut } from '../../actions/'
+import { signOut, redirect } from '../../actions/'
 
-
-
- export class Header extends Component {
+export class Header extends Component {
+  constructor(){
+    super()
+  }
 
  signOutUser = () => {
   this.props.signOut({})
@@ -13,6 +14,7 @@ import { signOut } from '../../actions/'
 
 render () {
   return (
+    <div>
     <header>
       <section>
         <h1>Star Traker</h1>
@@ -25,13 +27,20 @@ render () {
         <button className="favorites">Favorites<span className="fav-num">0</span></button>
       </nav>
     </header>
+
+    </div>
   ) 
 }
  
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  signOut: (data) => dispatch(signOut(data))
+const mapStateToProps = (state) => ({
+  redirect: state.redirect
 })
 
-export default connect(null, mapDispatchToProps)(Header)
+const mapDispatchToProps = (dispatch) => ({
+  signOut: (data) => dispatch(signOut(data)),
+  redirect: (bool) => dispatch(redirect(bool))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
