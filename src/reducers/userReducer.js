@@ -13,10 +13,10 @@ export const userReducer = (state={}, action) => {
       return action.user
 
     case"ADD_FAVORITES":
-    console.log(action.movies, "fav action movie")
-    console.log(state, "state movies")
       return {
-      favorites: [...state.favorites, action.movies]
+      id:state.id,
+      name: state.name,
+      favorites: action.movies
       }
 
     default: 

@@ -36,3 +36,8 @@ export const addFavorites = (movies) => ({
   type: "ADD_FAVORITES",
   movies
 })
+
+export const deleteFavorite = (id) => ({
+  type: "DELETE_FAVORITE",
+  id
+})
