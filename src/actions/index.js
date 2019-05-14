@@ -4,9 +4,11 @@ export const getMovies = (movies) => ({
   movies
 })
 
-export const addUser = (user) => ({
+export const addUser = (id,name,favorites) => ({
   type: "ADD_USER",
-  user
+  id,
+  name, 
+  favorites
 })
 
 export const signOut = (user) => ({
@@ -28,4 +30,9 @@ export const hasErrored = (message) => ({
 export const redirect = (bool) => ({
   type: "TOGGLE_REDIRECT",
   bool
+})
+
+export const addFavorites = (movies) => ({
+  type: "ADD_FAVORITES",
+  movies
 })

@@ -3,7 +3,7 @@ import { fetchData } from "../../utils/Api"
 import { connect } from 'react-redux'
 import { getMovies } from "../../actions"
 import { redirect } from '../../actions/index'
-import Card from '../../component/Card/Card'
+import  Card  from '../../component/Card/Card'
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
@@ -17,7 +17,6 @@ class MovieContainer extends Component {
       this.props.getMovies(movieData.results)
     } catch(error) {
       throw new Error(error.message)
-
     }
     this.props.redirect(false)
 
