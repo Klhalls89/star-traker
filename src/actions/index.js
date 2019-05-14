@@ -29,3 +29,8 @@ export const redirect = (bool) => ({
   type: "TOGGLE_REDIRECT",
   bool
 })
+
+export const addFavorites = (movies) => ({
+  type: "ADD_FAVORITES",
+  movies
+})
