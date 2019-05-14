@@ -1,13 +1,20 @@
 .dispaly-movies {
   background-color: $charcoal;
   display: grid;
-  grid-gap: 3%;
-  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 4%;
+  grid-template-columns: repeat(6, 1fr);
   padding: 20px;
+  margin-top: 20px;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (max-width: 1160px) {
   .dispaly-movies {
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(5, 1fr)
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .dispaly-movies {
+    grid-template-columns: repeat(4, 1fr)
   }
 }

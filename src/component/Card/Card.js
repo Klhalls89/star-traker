@@ -15,9 +15,7 @@ export class Card extends Component {
   
 
   click = async() =>  {
-    console.log(this.props.user, "user")
    if(typeof this.props.user.id !== 'number'){
-     console.log("clicked")
     this.setState({ error: "please sign in"})
    }else {
 
@@ -36,7 +34,6 @@ export class Card extends Component {
       overview: overview
     }
     const userId = data.user_id
-    console.log("userId:", userId )
     addFavoriteMovie(url,method,data,userId) 
   }
     
@@ -44,7 +41,6 @@ export class Card extends Component {
 
 
   render (){
-    console.log(this.props.error, "card error")
   const { poster_path, title, vote_average,user } = this.props;
   const imageUrl = `https://image.tmdb.org/t/p/w185/${poster_path}`;
   

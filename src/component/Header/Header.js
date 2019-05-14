@@ -10,11 +10,6 @@ export class Header extends Component {
 
  signOutUser = () => {
   this.props.signOut({})
-  console.log("sign out console check")
-  if(true){
-    console.log("got it if")
-    return <Redirect to="/"/>
-  }
  }
 
 render () {
