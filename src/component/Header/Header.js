@@ -15,19 +15,19 @@ export class Header extends Component {
   render () {
     return (
       <div>
-      <header>
-        <section>
-          <h1>Star Traker</h1>
-          <i class="fas fa-rocket"></i>
-          <p> {this.props.user.name ? `Hello ${this.props.user.name}` : ""}</p>
-        </section>
-        <nav>
-          <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
-          <NavLink to ="/SignUp" className="nav">Sign-Up</NavLink>
-          <button className="out"onClick={this.signOutUser}>Sign-Out</button>
-          <button className="favorites">Favorites</button>
-        </nav>
-      </header>
+        <header>
+         <section>
+           <h1>Star Traker</h1>
+            <i class="fas fa-rocket"></i>
+           <p> {this.props.user.name ? `Hello ${this.props.user.name}` : ""}</p>
+          </section>
+          <nav>
+            <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
+            <NavLink to ="/SignUp" className="nav">Sign-Up</NavLink>
+            <button className="out"onClick={this.signOutUser}>Sign-Out</button>
+            <NavLink className="favorite" to ="/Favorites" className="nav">Favorites</NavLink>
+          </nav>
+        </header>
       </div>
     ) 
   }

@@ -11,7 +11,8 @@ export class Card extends Component {
   constructor(){
     super()
     this.state={
-      error: ""
+      error: "",
+      active: false
     }
   }
 
@@ -42,9 +43,12 @@ export class Card extends Component {
         return id !== movie.movie_id
       })
       this.props.addFavorites(filteredMovies)
+      this.setState ({
+      active: false
+      })
     }
   }
-  
+
   addMovie = async() =>  {
     const { addFavoriteMovie } = this.props
     const method = "POST"
@@ -61,6 +65,9 @@ export class Card extends Component {
     }
     const userId = data.user_id
     addFavoriteMovie(url,method,data,userId) 
+    this.setState ({
+      active: true 
+    })
   } 
 
   render (){
@@ -70,7 +77,12 @@ export class Card extends Component {
     <div className="Card">
       <section>
       <p>{vote_average}/10</p>
-      <button onClick={this.checkForUser}><i class="far fa-star"></i></button>
+      {this.state.active ? <button 
+        className="favorite" 
+        onClick={this.checkForUser}><i 
+        class="far fa-star"></i></button> :
+        <button onClick={this.checkForUser}><i 
+                class="far fa-star"></i></button>}
       </section>
       <img src={imageUrl}/>
       {this.state.error && this.state.error}

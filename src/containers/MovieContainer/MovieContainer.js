@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
-import { fetchData } from "../../utils/Api"
-import { connect } from 'react-redux'
-import { getMovies } from "../../actions"
-import { redirect } from '../../actions/index'
-import  Card  from '../../component/Card/Card'
+import React, { Component } from 'react';
+import { fetchData } from "../../utils/Api";
+import { connect } from 'react-redux';
+import { getMovies } from "../../actions";
+import { redirect } from '../../actions/index';
+import  Card  from '../../component/Card/Card';
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
-
 
 class MovieContainer extends Component {
   componentDidMount = async () => {
