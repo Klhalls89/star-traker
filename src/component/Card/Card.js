@@ -15,13 +15,6 @@ export class Card extends Component {
     }
   }
 
-  //when user clicks check if user is signed in  
-  // function validate 
-  // if not signed in display error 
-  // if signed in validate if movie is in state tree 
-  // if movie is in state remove that movie 
-  // if not add to movie 
-
   checkForUser = () => {
     if(typeof this.props.user.id !== 'number'){
       this.setState({ error: "please sign in"})
@@ -36,14 +29,11 @@ export class Card extends Component {
     const foundMovie = favorites.find((movie) => {
       return movie.movie_id === id
     })
-    console.log(foundMovie)
    foundMovie ? this.deleteFavorite(id,favorites) : this.addMovie() 
   }
 
   deleteFavorite = async (id,favorites) => {
-    console.log(id)
     const user_id = this.props.user.id
-    console.log(user_id, "delete user id")
     const url = `http://localhost:3000/api/users/${user_id}/favorites/${id}`
     const options = createOption("DELETE")
     const response = await fetchData(url, options)
@@ -51,14 +41,11 @@ export class Card extends Component {
       const filteredMovies = favorites.filter((movie) => {
         return id !== movie.movie_id
       })
-
-      console.log(filteredMovies, "filtered from delete")
       this.props.addFavorites(filteredMovies)
     }
   }
   
   addMovie = async() =>  {
-  
     const { addFavoriteMovie } = this.props
     const method = "POST"
     const url ="http://localhost:3000/api/users/favorites/new"
@@ -74,14 +61,11 @@ export class Card extends Component {
     }
     const userId = data.user_id
     addFavoriteMovie(url,method,data,userId) 
-  
   } 
-
 
   render (){
   const { poster_path, title, vote_average,user } = this.props;
   const imageUrl = `https://image.tmdb.org/t/p/w185/${poster_path}`;
-  
   return (
     <div className="Card">
       <section>

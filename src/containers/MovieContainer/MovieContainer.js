@@ -13,7 +13,6 @@ class MovieContainer extends Component {
     try {
       const url = 'https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&with_genres=878';
       const movieData = await fetchData(url);
-      console.log(this.props.getMovies)
       this.props.getMovies(movieData.results)
     } catch(error) {
       throw new Error(error.message)
@@ -23,19 +22,16 @@ class MovieContainer extends Component {
   }
   
   render(){
-    console.log(this.props)
-      const { movies } = this.props;
-      const displayMovies = movies.map((movie) => {
-        return <Card key={movie.id} {...movie}/>
-      })
-      return(
-        <div className="dispaly-movies">
-         {displayMovies}
-        </div>
-      )
-    }
-
-
+    const { movies } = this.props;
+    const displayMovies = movies.map((movie) => {
+      return <Card key={movie.id} {...movie}/>
+    })
+    return(
+      <div className="dispaly-movies">
+        {displayMovies}
+      </div>
+    )
+  }
 }
 
 export const mapStateToProps = (state) => ({
@@ -46,7 +42,5 @@ export const mapDispatchToProps = (dispatch) => ({
   getMovies : (movies) => dispatch(getMovies(movies)),
   redirect: (bool) => dispatch(redirect(bool))
 })
-
-  
 
 export default connect(mapStateToProps , mapDispatchToProps)(MovieContainer)
