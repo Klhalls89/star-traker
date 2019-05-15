@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { getMovies } from "../../actions"
 import { redirect } from '../../actions/index'
 import  Card  from '../../component/Card/Card'
+import Moviedetails from '../../component/MovieDetails/MovieDetails'
+import { Route } from 'react-router-dom'
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
@@ -23,13 +25,16 @@ class MovieContainer extends Component {
   }
   
   render(){
-    console.log(this.props)
+    
       const { movies } = this.props;
       const displayMovies = movies.map((movie) => {
         return <Card key={movie.id} {...movie}/>
       })
       return(
+        
+        
         <div className="dispaly-movies">
+        
          {displayMovies}
         </div>
       )

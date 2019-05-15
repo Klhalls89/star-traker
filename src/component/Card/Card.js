@@ -1,8 +1,8 @@
 import React, { Component }from 'react';
 import { addFavoriteMovie } from '../../thunks/addFavorites'
-import { hasErrored, deleteFavorite } from '../../actions'
+import { hasErrored } from '../../actions'
 import { connect } from 'react-redux'
-import { Redirect} from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { fetchData } from '../../utils/Api'
 import { createOption } from '../../utils/options'
 import { addFavorites } from '../../actions'
@@ -79,8 +79,9 @@ export class Card extends Component {
 
 
   render (){
-  const { poster_path, title, vote_average,user } = this.props;
+  const { poster_path, title, vote_average,user,id } = this.props;
   const imageUrl = `https://image.tmdb.org/t/p/w185/${poster_path}`;
+  console.log(id, "chejekekek")
   
   return (
     <div className="Card">
@@ -88,7 +89,9 @@ export class Card extends Component {
       <p>{vote_average}/10</p>
       <button onClick={this.checkForUser}><i class="far fa-star"></i></button>
       </section>
+      <Link to={`/movie/${id}`}>
       <img src={imageUrl}/>
+      </Link>
       {this.state.error && this.state.error}
     </div>
   )
