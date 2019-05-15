@@ -26,9 +26,9 @@ should be on localhost 3001
 
 ## Contributors
 
-Kristen<Klhalls89@gmail.com>
+Kristen <Klhalls89@gmail.com>
 
-Niraj<niroz.aryal11@gmail.com>
+Niraj <niroz.aryal11@gmail.com>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
