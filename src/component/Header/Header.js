@@ -19,7 +19,7 @@ export class Header extends Component {
          <section>
            <h1>Star Traker</h1>
             <i class="fas fa-rocket"></i>
-           <p> {this.props.user.name ? `Hello ${this.props.user.name}` : ""}</p>
+           <p className="greet">{this.props.user.name ? `Hello, ${this.props.user.name}` : ""}</p>
           </section>
           <nav>
             <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
