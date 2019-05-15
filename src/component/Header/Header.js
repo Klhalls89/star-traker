@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signOut, redirect } from '../../actions/'
+import { signOut, redirect } from '../../actions/';
 
 export class Header extends Component {
   constructor(){
@@ -12,28 +12,25 @@ export class Header extends Component {
   this.props.signOut({})
  }
 
-render () {
-  console.log(this.props.user, "header user")
-  return (
-    <div>
-    <header>
-      <section>
-        <h1>Star Traker</h1>
-        <i class="fas fa-rocket"></i>
-        <p> {this.props.user.name ? `Hello ${this.props.user.name}` : ""}</p>
-      </section>
-      <nav>
-        <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
-        <NavLink to ="/SignUp" className="nav">Sign-up</NavLink>
-        <button className="nav" onClick={this.signOutUser}> sign out</button>
-        <button className="favorites">Favorites<span className="fav-num">0</span></button>
-      </nav>
-     
-    </header>
-    </div>
-  ) 
-}
- 
+  render () {
+    return (
+      <div>
+        <header>
+         <section>
+           <h1>Star Traker</h1>
+            <i class="fas fa-rocket"></i>
+           <p className="greet">{this.props.user.name ? `Hello, ${this.props.user.name}` : ""}</p>
+          </section>
+          <nav>
+            <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
+            <NavLink to ="/SignUp" className="nav">Sign-Up</NavLink>
+            <button className="out"onClick={this.signOutUser}>Sign-Out</button>
+            <NavLink className="favorite" to ="/Favorites" className="nav">Favorites</NavLink>
+          </nav>
+        </header>
+      </div>
+    ) 
+  }
 }
 
 const mapStateToProps = (state) => ({

@@ -3,7 +3,7 @@ header {
   display: grid; 
   grid-template-areas: "logo nav";
   padding: 0 10px;
-
+  
   section {
     align-items: center;
     display: flex;
@@ -12,6 +12,34 @@ header {
     h1 {
       font-family: $accent-font;
     }
+  }
+
+  nav {
+    align-items: center;
+    display: flex;
+    grid-area: nav;
+    justify-content: flex-end;
+   
+    a {
+      color: $silver;
+      font-size: 14px;
+      font-weight: 300;
+      margin: 5px;
+      text-decoration: none;
+
+      :hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .out {
+    font-family: $main-font;
+    font-size: 14px;
+    font-weight: 300;
+    background-color: $navy;
+    color: $silver;
+    border: 0;
   }
 
   .favorites {
@@ -27,24 +55,13 @@ header {
     }
   }
 
-  nav {
-    align-items: center;
-    display: flex;
-    grid-area: nav;
-    justify-content: flex-end;
-   
-    a {
-      color: $silver;
-      font-size: 12px;
-      font-weight: 300;
-      margin: 5px;
-      text-decoration: none;
+  .favorite {
+    color: $coral;
+  }
 
-      :hover {
-        cursor: pointer;
-      }
-    }
+  .greet {
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: 300;
   }
 }
-
-
