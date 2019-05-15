@@ -4,7 +4,7 @@ import MovieContainer from '../MovieContainer/MovieContainer'
 import Header from '../../component/Header/Header'
 import SignIn from '../../component/SignIn/SignIn'
 import SignUp from '../../component/Signup/SignUp'
-import MovieDetails from '../../component/MovieDetails/MovieDetails'
+import  Favorites  from '../Favorites/Favorites'
 import { connect } from 'react-redux';
 
 
@@ -20,6 +20,8 @@ export class App extends Component {
         <Route exact path='/SignIn' component={SignIn} />
         <Route exact path='/SignUp' component={SignUp} />
         <Route exact path='/' component={MovieContainer}/>
+        <Route exact path='/Favorites' component={Favorites}/>
+        
         {/* <Route exact  path='/movie/:id' render={({ match }) => {
           const { movies } = this.props
           const { id } = match.params;

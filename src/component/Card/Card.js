@@ -36,7 +36,7 @@ export class Card extends Component {
     const foundMovie = favorites.find((movie) => {
       return movie.movie_id === id
     })
-    console.log(foundMovie)
+    console.log(foundMovie, "found movie")
    foundMovie ? this.deleteFavorite(id,favorites) : this.addMovie() 
   }
 
@@ -81,7 +81,7 @@ export class Card extends Component {
   render (){
   const { poster_path, title, vote_average,user,id } = this.props;
   const imageUrl = `https://image.tmdb.org/t/p/w185/${poster_path}`;
-  console.log(id, "chejekekek")
+  
   
   return (
     <div className="Card">

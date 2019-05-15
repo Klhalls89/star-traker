@@ -29,9 +29,11 @@ class SignIn extends Component {
     e.preventDefault()
     const { email, password } = this.state
     const data = { email, password}
+
     const url ="http://localhost:3000/api/users"
     const method = "POST"
     this.props.signInUser(url, method, data)
+    
   }
 
   render(){
@@ -56,13 +58,15 @@ class SignIn extends Component {
           <button>Let's go!</button>
         </form>
         { this.props.redirect && <Redirect to="/"/>}
+       {this.props.hasErrored && this.props.hasErrored}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  redirect: state.redirect
+  redirect: state.redirect,
+  hasErrored: state.hasErrored
 })
 
 const mapDispatchToProps = (dispatch) => ({

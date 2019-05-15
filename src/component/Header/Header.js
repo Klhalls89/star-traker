@@ -26,7 +26,7 @@ render () {
         <NavLink to ="/SignIn" className="nav">Sign-In</NavLink>
         <NavLink to ="/SignUp" className="nav">Sign-up</NavLink>
         <button className="nav" onClick={this.signOutUser}> sign out</button>
-        <button className="favorites">Favorites<span className="fav-num">0</span></button>
+        <NavLink to="/Favorites" className="favorites">Favorites<span className="fav-num">0</span></NavLink>
       </nav>
      
     </header>
