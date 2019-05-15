@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route,  Redirect } from "react-router-dom";
-// import './Moviedetails.css';
+import './MovieDetails.scss';
 
-class MovieDetails extends Component {
+ class MovieDetails extends Component {
     constructor(){
         super()
         this.state={
@@ -17,23 +17,24 @@ class MovieDetails extends Component {
     }
     render(){
       console.log(this.props, "details props")
-        const { title,overview, vote_average, poster } = this.props
+        const { title,overview, vote_average, poster_path } = this.props
         console.log(title, "details title")
         if (this.state.redirect) return <Redirect to={'/'} />
         // const poster = this.props.poster_path
-        // const path = `https://image.tmdb.org/t/p/w185/${poster}`
+        const path = `https://image.tmdb.org/t/p/w185/${poster_path}`
         return (
             <div className="movie-details-box">
-              
-                <button onClick={this.toggle}>go back</button>
+            <h1>Movie Deatils osososo</h1>
+              {/* <h1>Movie details</h1>
+                 <button onClick={this.toggle}>go back</button>
                 
-                  {/* <img src={path}></img> */}
+                  <img src={path}></img>
                     <div className="text-area">
-                      <h3>{this.props.title}</h3>
-                      <p>{this.props.overview}</p>
+                      <h3>{title}</h3>
+                      <p>{overview}</p>
                       <p>Rating: {this.props.vote_average} /10</p>
-                    </div>
-                
+                    </div>  */}
+               
             </div>
         )
     }

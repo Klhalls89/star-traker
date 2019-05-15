@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import { getMovies } from "../../actions"
 import { redirect } from '../../actions/index'
 import  Card  from '../../component/Card/Card'
-import Moviedetails from '../../component/MovieDetails/MovieDetails'
+import MovieDetails from '../../component/MovieDetails/MovieDetails'
 import { Route } from 'react-router-dom'
+
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
@@ -25,18 +26,44 @@ class MovieContainer extends Component {
   }
   
   render(){
-    
+    console.log(this.props, "movie container props")
       const { movies } = this.props;
+     
       const displayMovies = movies.map((movie) => {
         return <Card key={movie.id} {...movie}/>
       })
+     
       return(
         
+      
+        <div className="route-box" >
+        <h1>fknsdknc;sldncl;ds</h1>
+     
+        <Route exact path='/movie/:id' render={({ match }) => {
+          debugger;
+        // const { movies } = this.props
+        const { id } = match.params;
+        console.log(id, "route id")
+        console.log(movies, "app movies")
         
-        <div className="dispaly-movies">
+        const foundMovie = movies.find((movie) => {
+          return movie.id === parseInt(id);
+        })
+        console.log(foundMovie, "details props")
+        return <MovieDetails {...foundMovie}/>
         
+      }} />
+ 
+      
+     
+          <div className="dispaly-movies">
          {displayMovies}
-        </div>
+         </div>
+       
+       
+       </div>
+
+       
       )
     }
 

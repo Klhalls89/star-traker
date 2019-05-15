@@ -20,7 +20,7 @@ export class App extends Component {
         <Route exact path='/SignIn' component={SignIn} />
         <Route exact path='/SignUp' component={SignUp} />
         <Route exact path='/' component={MovieContainer}/>
-        <Route exact  path='/movie/:id' render={({ match }) => {
+        {/* <Route exact  path='/movie/:id' render={({ match }) => {
           const { movies } = this.props
           const { id } = match.params;
           console.log(id, "route id")
@@ -32,7 +32,7 @@ export class App extends Component {
           console.log(foundMovie, "details props")
           return <MovieDetails {...foundMovie}/>
           
-        }} />
+        }} /> */}
       </div>
     )
   }
