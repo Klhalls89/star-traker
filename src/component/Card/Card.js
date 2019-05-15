@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Redirect} from 'react-router-dom'
 import { fetchData } from '../../utils/Api'
 import { createOption } from '../../utils/options'
+import { addFavorites } from '../../actions'
 
 export class Card extends Component {
   constructor(){
@@ -36,17 +37,24 @@ export class Card extends Component {
       return movie.movie_id === id
     })
     console.log(foundMovie)
-   foundMovie ? this.deleteFavorite(id) : this.addMovie() 
+   foundMovie ? this.deleteFavorite(id,favorites) : this.addMovie() 
   }
 
-  deleteFavorite = async (id) => {
+  deleteFavorite = async (id,favorites) => {
     console.log(id)
     const user_id = this.props.user.id
     console.log(user_id, "delete user id")
     const url = `http://localhost:3000/api/users/${user_id}/favorites/${id}`
     const options = createOption("DELETE")
     const response = await fetchData(url, options)
-    console.log(response)
+    if(response.status === "success"){
+      const filteredMovies = favorites.filter((movie) => {
+        return id !== movie.movie_id
+      })
+
+      console.log(filteredMovies, "filtered from delete")
+      this.props.addFavorites(filteredMovies)
+    }
   }
   
   addMovie = async() =>  {
@@ -94,7 +102,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   addFavoriteMovie:(url,method,data) => dispatch(addFavoriteMovie(url,method,data)),
-  hasErrored: (message) => dispatch(hasErrored(message))
+  hasErrored: (message) => dispatch(hasErrored(message)),
+  addFavorites: (movies) => dispatch(addFavorites(movies))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Card);
